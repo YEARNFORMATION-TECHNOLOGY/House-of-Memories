@@ -1,3 +1,14 @@
+try:
+    with open("example.txt", "x") as f:
+        f.write("Hello, World!")
+except FileExistsError:
+    print("The file already exists.")
+
+with open("Shopping List.py", "r") as f:
+    shopping_list = f.read()
+print(shopping_list)
+
+
 Items = []
 
 while True:
