@@ -1,11 +1,5 @@
-with open("Shopping List.py", "r") as f:
-    shopping_list = f.read()
+Items = []
 
-with open("Shopping List.txt", "w") as f:
-    f.write(shopping_list)
-    
-with open("Shopping List.txt", "a") as f:
-    f.write(shopping_list)
 while True:
     try:
         print("\nShopping List Manager")
@@ -18,27 +12,31 @@ while True:
 
         if choice == "1":
             name = input("Enter item name: ")
-            contacts.append(name)
+            Items.append(name)
             print("Item added!")
 
         elif choice == "2":
             name = input("Enter item to remove: ")
-            if name in contacts:
-                contacts.remove(name)
+            if name in Items:
+                Items.remove(name)
                 print("Item removed!")
             else:
                 print("Item not found.")
 
         elif choice == "3":
             print("\nShopping List:")
-            if len(contacts) == 0:
+            if not Items:
                 print("No items yet.")
             else:
-                for contact in contacts:
-                    print("-", contact)
+                for item in Items:
+                    print("-", item)
 
         elif choice == "4":
-            print("Goodbye!")
+            # Save the list to the file before exiting
+            with open("Shopping List.txt", "w") as f:
+                for item in Items:
+                    f.write(item + "\n")
+            print("List saved. Goodbye!")
             break
 
         else:
