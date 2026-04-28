@@ -2,14 +2,15 @@ try:
     with open("example.txt", "x") as f:
         f.write("Hello, World!")
 except FileExistsError:
-    print("The file already exists.")
-
-with open("Shopping List.py", "r") as f:
-    shopping_list = f.read()
-print(shopping_list)
-
-
+    pass
+    
 Items = []
+try:
+    with open("Shopping List.txt", "r") as f:
+        
+        Items = [line.strip() for line in f.readlines() if line.strip()]
+except FileNotFoundError:
+    print("No previous shopping list found. Starting fresh.")
 
 while True:
     try:
@@ -43,7 +44,6 @@ while True:
                     print("-", item)
 
         elif choice == "4":
-            # Save the list to the file before exiting
             with open("Shopping List.txt", "w") as f:
                 for item in Items:
                     f.write(item + "\n")
