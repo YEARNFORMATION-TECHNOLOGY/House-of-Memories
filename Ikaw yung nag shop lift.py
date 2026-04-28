@@ -3,6 +3,9 @@ with open("Shopping List.py", "r") as f:
 
 with open("Shopping List.txt", "w") as f:
     f.write(shopping_list)
+    
+with open("Shopping List.txt", "a") as f:
+    f.write(shopping_list)
 while True:
     try:
         print("\nShopping List Manager")
