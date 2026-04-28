@@ -43,3 +43,8 @@ while True:
         break
     except Exception as e:
         print("An error occurred:", e)
+
+with open("shopping_list.txt", "w") as f:
+    for item in contacts:
+        f.write(item + "\n")
+print("List saved successfully!")
